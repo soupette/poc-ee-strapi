@@ -15,9 +15,7 @@ const importCompo = (f, defaultComponentPath, cb) =>
             cb();
           }
 
-          console.log(module);
           const { Button } = module;
-          console.log(Button.default);
 
           return { default: Button };
         });
