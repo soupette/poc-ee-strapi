@@ -2,18 +2,18 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import List from '../../components/List';
 
-const ListView = () => {
+const ListViewEE = () => {
   const { push } = useHistory();
 
   const handleClick = (id) => {
-    push(`/roles/${id}`);
+    push(`/roles-ee/${id}`);
   };
 
   return (
     <section style={{ marginTop: 30 }}>
-      <List onClick={handleClick} />
+      <List onClick={handleClick} title="EE" />
     </section>
   );
 };
 
-export default ListView;
+export default ListViewEE;

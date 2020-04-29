@@ -17,7 +17,13 @@ const importCompo = (f, defaultComponentPath, cb) =>
 
           const { Button } = module;
 
-          return { default: Button };
+          return {
+            default: () => (
+              <section style={{ textAlign: 'center' }}>
+                <Button primary> Simulate common default component</Button>
+              </section>
+            ),
+          };
         });
       }
 
@@ -41,11 +47,7 @@ const UseSmartImport = ({ filePath, defaultComponentPath, redirectStatement, ...
 
       const Compo = importCompo(filePath, defaultComponentPath, cb);
 
-      setModule(
-        <Compo {...rest} primary>
-          Simulate common default component
-        </Compo>,
-      );
+      setModule(<Compo {...rest} />);
     };
 
     loadCompo();

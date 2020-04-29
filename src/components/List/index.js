@@ -2,7 +2,7 @@ import React from 'react';
 import { List as ListCompo } from '@buffetjs/custom';
 import Row from '../Row';
 
-const List = ({ onClick }) => {
+const List = ({ onClick, title }) => {
   const rows = [
     {
       id: 1,
@@ -31,7 +31,12 @@ const List = ({ onClick }) => {
 
   return (
     <section style={{ marginTop: 30 }}>
-      <ListCompo button={buttonProps} title="Roles" items={rows} customRowComponent={Row} />
+      <ListCompo
+        button={buttonProps}
+        title={`Roles ${title}`}
+        items={rows}
+        customRowComponent={Row}
+      />
     </section>
   );
 };

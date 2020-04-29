@@ -6,7 +6,7 @@ import EditView from '../EditView';
 const RolesFormView = () => {
   const {
     params: { id },
-  } = useRouteMatch('/roles/:id');
+  } = useRouteMatch('/roles-ee/:id');
   const isCreating = id === 'new';
 
   const shouldRedirect = () => false;

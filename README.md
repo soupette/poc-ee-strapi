@@ -10,5 +10,20 @@
 
 So how to play with the example?
 
-To simulate the EE you can set then `filePath` prop of the `SmartImport` component from `RolesFormView` container to `filePath="ee/containers/CreateView"`. If you change it a path that does not exist it will redirect the user to the `EEPage` when clicking on the `Add New` button from the role page.
-In this POC the roles are still editable only creation is locked.
+EE:
+
+- Click on Roles EE you can:
+  - Add a role
+  - Edit a role
+
+CE:
+
+- Click on Roles CE
+- Edit a role
+
+Play with the CE Container:
+
+When clicking on add new you will be redirected to the `EEPage` to upgrade your plan.
+If you change the `shouldRedirect` method to `const shouldRedirect = () => false` you will see a default component that also simulates the `EEPage`so the create role page is "kind of" protected. Or you can disable the redirection direction in the UI.
+
+IMO, we will need to forbid customising the `SmartImport` component for the generated apps. This can be easily done by modifying the `.cache` creation in this [file](https://github.com/strapi/strapi/blob/e79daadb5a9857e25e14d53d9a94dcfe4994e949/packages/strapi-admin/index.js#L130-L150).
