@@ -15,7 +15,7 @@ const RolesFormView = () => {
     <Suspense fallback="...loading">
       {isCreating ? (
         <SmartImport
-          filePath="ee/ceontainers/CreateView"
+          filePath="ee/containers/CreateView"
           redirectStatement={shouldRedirect}
           id={id}
         />
