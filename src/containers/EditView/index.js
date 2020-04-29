@@ -1,11 +1,6 @@
 import React from 'react';
+import Edit from '../../components/Edit';
 
-const EditView = () => {
-  return (
-    <div>
-      <h1>Edit Role</h1>
-    </div>
-  );
-};
+const EditView = ({ id }) => <Edit id={id} />;
 
 export default EditView;
