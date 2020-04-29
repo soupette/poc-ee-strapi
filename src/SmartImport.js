@@ -18,6 +18,8 @@ const importCompo = (f, defaultComponentPath, cb) =>
           const { Button } = module;
 
           return {
+            // Here's the trick
+            // I am creating a new component here
             default: () => (
               <section style={{ textAlign: 'center' }}>
                 <Button primary> Simulate common default component</Button>
