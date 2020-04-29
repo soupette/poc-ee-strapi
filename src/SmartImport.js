@@ -4,18 +4,33 @@ import { Redirect } from 'react-router-dom';
 
 const importCompo = (f, defaultComponentPath, cb) =>
   lazy(() =>
-    import(`./${f}`)
-      // .catch(() => ({ default: null })),
-      .catch((err) => {
-        console.log(err);
-        return import(`${defaultComponentPath}`).then((module) => {
+    import(`./${f}`).catch((err) => {
+      console.log(err);
+
+      // Simulate behaviour in Strapi
+      // Lazy only support default export so there's a trick to do here
+      if (defaultComponentPath === 'strapi-helper-plugin') {
+        return import('strapi-helper-plugin').then((module) => {
           if (cb) {
             cb();
           }
 
-          return module;
+          console.log(module);
+          const { Button } = module;
+          console.log(Button.default);
+
+          return { default: Button };
         });
-      }),
+      }
+
+      return import(`${defaultComponentPath}`).then((module) => {
+        if (cb) {
+          cb();
+        }
+
+        return module;
+      });
+    }),
   );
 
 const UseSmartImport = ({ filePath, defaultComponentPath, redirectStatement, ...rest }) => {
@@ -28,7 +43,11 @@ const UseSmartImport = ({ filePath, defaultComponentPath, redirectStatement, ...
 
       const Compo = importCompo(filePath, defaultComponentPath, cb);
 
-      setModule(<Compo {...rest} />);
+      setModule(
+        <Compo {...rest} primary>
+          Simulate common default component
+        </Compo>,
+      );
     };
 
     loadCompo();
@@ -42,7 +61,8 @@ const UseSmartImport = ({ filePath, defaultComponentPath, redirectStatement, ...
 };
 
 UseSmartImport.defaultProps = {
-  defaultComponentPath: './components/DefaultCompo',
+  // defaultComponentPath: './components/DefaultCompo',
+  defaultComponentPath: 'strapi-helper-plugin',
 };
 
 export default UseSmartImport;

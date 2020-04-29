@@ -9,13 +9,13 @@ const RolesFormView = () => {
   } = useRouteMatch('/roles/:id');
   const isCreating = id === 'new';
 
-  const shouldRedirect = () => isCreating;
+  const shouldRedirect = () => false;
 
   return (
     <Suspense fallback="...loading">
       {isCreating ? (
         <SmartImport
-          filePath="ee/containers/CreateView"
+          filePath="ee/ceontainers/CreateView"
           redirectStatement={shouldRedirect}
           id={id}
         />
