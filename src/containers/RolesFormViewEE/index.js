@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import SmartImport from '../../SmartImport';
 import EditView from '../EditView';
@@ -12,7 +12,7 @@ const RolesFormView = () => {
   const shouldRedirect = () => false;
 
   return (
-    <Suspense fallback="...loading">
+    <>
       {isCreating ? (
         <SmartImport
           filePath="ee/containers/CreateView"
@@ -22,7 +22,7 @@ const RolesFormView = () => {
       ) : (
         <EditView id={id} />
       )}
-    </Suspense>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import useApp from '../../hooks/useApp';
 import RedirectToggle from '../../components/RedirectToggle';
@@ -21,7 +21,7 @@ const RolesFormView = () => {
   };
 
   return (
-    <Suspense fallback="...loading">
+    <>
       {isCreating ? (
         <>
           <RedirectToggle />
@@ -34,7 +34,7 @@ const RolesFormView = () => {
       ) : (
         <EditView id={id} />
       )}
-    </Suspense>
+    </>
   );
 };
 

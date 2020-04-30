@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, lazy } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Redirect } from 'react-router-dom';
 
 const importCompo = (f, defaultComponentPath, cb) =>
@@ -40,7 +40,7 @@ const importCompo = (f, defaultComponentPath, cb) =>
   );
 
 const UseSmartImport = ({ filePath, defaultComponentPath, redirectStatement, ...rest }) => {
-  const [modules, setModule] = useState([]);
+  const [module, setModule] = useState(null);
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const UseSmartImport = ({ filePath, defaultComponentPath, redirectStatement, ...
     return <Redirect to="/entreprise-edition" />;
   }
 
-  return modules;
+  return <Suspense fallback="...loading">{module}</Suspense>;
 };
 
 UseSmartImport.defaultProps = {
