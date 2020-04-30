@@ -1,11 +1,11 @@
 import React from 'react';
 
-const HomePage = () => {
+const DefaultCompo = () => {
   return (
     <section style={{ textAlign: 'center' }}>
-      <h1>POC EE Strapi</h1>
+      <p>DefaultCompo</p>
     </section>
   );
 };
 
-export default HomePage;
+export default DefaultCompo;

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const HomePage = () => {
+const CreateView = () => {
   return (
     <section style={{ textAlign: 'center' }}>
-      <h1>POC EE Strapi</h1>
+      <h1>Create Role EE</h1>
     </section>
   );
 };
 
-export default HomePage;
+export default CreateView;
