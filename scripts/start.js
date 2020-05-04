@@ -103,9 +103,9 @@ checkBrowsers(paths.appPath, isInteractive)
       if (err) {
         return console.log(err);
       }
-      // if (isInteractive) {
-      //   clearConsole();
-      // }
+      if (isInteractive) {
+        clearConsole();
+      }
 
       // We used to support resolving modules according to `NODE_PATH`.
       // This now has been deprecated in favor of jsconfig/tsconfig.json

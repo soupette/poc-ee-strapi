@@ -29,7 +29,8 @@ const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
 
-const IS_EE = require('./is_ee_env');
+// Here's the modification
+const aliases = require('./alias');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -49,17 +50,6 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
-
-const aliases = {
-  // the following resolves files which are different between CE and EE
-  ee_else_ce: paths.appSrc,
-};
-
-if (IS_EE) {
-  Object.assign(aliases, {
-    ee_else_ce: path.join(paths.appSrc, 'ee'),
-  });
-}
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
