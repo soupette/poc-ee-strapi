@@ -1,7 +1,8 @@
 import React from 'react';
 import { Fonts, GlobalStyle } from '@buffetjs/styles';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import SmartImport from '../../SmartImport';
+import CreateView from 'ee_else_ce/containers/CreateView';
+import EditView from 'ee_else_ce/containers/EditView';
 import HomePage from '../HomePage';
 import ListView from '../ListView';
 import EEPage from '../EEPage';
@@ -35,18 +36,10 @@ function App() {
           </nav>
           <Switch>
             <Route path="/roles/new">
-              {/*
-                EndPoint to create a new role.
-                If in CE the USER will be redirected to the entreprise page to upgrade its plan
-              */}
-              <SmartImport filePath="ee/containers/EditView" redirectStatement={() => true} />
+              <CreateView />
             </Route>
             <Route path="/roles/:id">
-              <SmartImport
-                filePath="ee/containers/EditView"
-                // Use the default view so the user can see the form
-                defaultComponentPath="containers/EditView"
-              />
+              <EditView />
             </Route>
             <Route path="/roles">
               <ListView />
