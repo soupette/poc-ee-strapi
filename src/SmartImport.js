@@ -29,7 +29,7 @@ const importCompo = (f, defaultComponentPath, cb) =>
         });
       }
 
-      return import(`${defaultComponentPath}`).then((module) => {
+      return import(`./${defaultComponentPath}`).then((module) => {
         if (cb) {
           cb();
         }
