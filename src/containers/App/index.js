@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Fonts, GlobalStyle } from '@buffetjs/styles';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import AppProvider from '../AppProvider';
 import HomePage from '../HomePage';
-import ListViewCE from '../ListViewCE';
-import ListViewEE from '../ListViewEE';
-import RolesFormViewEE from '../RolesFormViewEE';
-import RolesFormViewCE from '../RolesFormViewCE';
+import ListView from '../ListView';
+import RolesFormView from '../RolesFormView';
 import EEPage from '../EEPage';
 
 function App() {
-  const [isRedirectEnabled, setIsRedirect] = useState(true);
-  const toggleRedirect = () => setIsRedirect((prev) => !prev);
-
   return (
-    <AppProvider isRedirectEnabled={isRedirectEnabled} toggleRedirect={toggleRedirect}>
+    <>
       <Fonts />
       <GlobalStyle />
 
@@ -34,28 +28,17 @@ function App() {
               </li>
               <li>
                 <p>
-                  <Link to="/roles-ee">Roles EE</Link>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <Link to="/roles-ce">Roles CE</Link>
+                  <Link to="/roles">Roles</Link>
                 </p>
               </li>
             </ul>
           </nav>
           <Switch>
-            <Route path="/roles-ee/:id">
-              <RolesFormViewEE />
+            <Route path="/roles/:id">
+              <RolesFormView />
             </Route>
-            <Route path="/roles-ce/:id">
-              <RolesFormViewCE />
-            </Route>
-            <Route path="/roles-ce">
-              <ListViewCE />
-            </Route>
-            <Route path="/roles-ee">
-              <ListViewEE />
+            <Route path="/roles">
+              <ListView />
             </Route>
             <Route path="/entreprise-edition">
               <EEPage />
@@ -66,7 +49,7 @@ function App() {
           </Switch>
         </div>
       </Router>
-    </AppProvider>
+    </>
   );
 }
 
