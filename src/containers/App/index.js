@@ -1,9 +1,11 @@
 import React from 'react';
 import { Fonts, GlobalStyle } from '@buffetjs/styles';
-import { BrowserRouter as Router, Switch, Route, Link, k } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import CreateView from 'ee_else_ce/containers/CreateView';
+import EditView from 'ee_else_ce/containers/EditView';
 import HomePage from '../HomePage';
 import ListView from '../ListView';
-import EditView from '../EditView';
+import EEPage from '../EEPage';
 
 function App() {
   return (
@@ -16,19 +18,34 @@ function App() {
           <nav>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <p>
+                  <Link to="/">Home</Link>
+                </p>
               </li>
               <li>
-                <Link to="/roles">Roles</Link>
+                <p>
+                  <Link to="/entreprise-edition">EE</Link>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <Link to="/roles">Roles</Link>
+                </p>
               </li>
             </ul>
           </nav>
           <Switch>
+            <Route path="/roles/new">
+              <CreateView />
+            </Route>
             <Route path="/roles/:id">
               <EditView />
             </Route>
             <Route path="/roles">
               <ListView />
+            </Route>
+            <Route path="/entreprise-edition">
+              <EEPage />
             </Route>
             <Route path="/">
               <HomePage />
