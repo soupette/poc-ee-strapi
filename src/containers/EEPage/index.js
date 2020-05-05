@@ -1,11 +1,11 @@
 import React from 'react';
 
-const HomePage = () => {
+const EEPage = () => {
   return (
     <section style={{ textAlign: 'center' }}>
-      <h1>POC EE Strapi</h1>
+      <h1>Upgrade Plan to EE</h1>
     </section>
   );
 };
 
-export default HomePage;
+export default EEPage;
