@@ -36,9 +36,9 @@ function App() {
           <Switch>
             <Route path="/roles/new">
               {/*
-                EndPoint to create a new role.
-                If in CE the USER will be redirected to the entreprise page to upgrade its plan
-              */}
+      EndPoint to create a new role.
+      If in CE the USER will be redirected to the entreprise page to upgrade its plan
+    */}
               <SmartImport filePath="ee/containers/EditView" redirectStatement={() => true} />
             </Route>
             <Route path="/roles/:id">
