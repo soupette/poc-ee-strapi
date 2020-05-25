@@ -31,6 +31,7 @@ const appPackageJson = require(paths.appPackageJson);
 
 // Here's the modification
 const aliases = require('./alias');
+const IS_EE = require('./is_ee_env');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -520,6 +521,21 @@ module.exports = function (webpackEnv) {
             : undefined,
         ),
       ),
+      new webpack.NormalModuleReplacementPlugin(/ee_else_ce(\.*)/, function (resource) {
+        const containerPathName = resource.context.split('/containers/');
+
+        if (IS_EE) {
+          resource.request = resource.request.replace(
+            /ee_else_ce/,
+            path.join(containerPathName[0], 'ee'),
+          );
+        } else {
+          resource.request = resource.request.replace(
+            /ee_else_ce/,
+            path.join(containerPathName[0]),
+          );
+        }
+      }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358

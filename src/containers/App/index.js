@@ -6,6 +6,7 @@ import EditView from 'ee_else_ce/containers/EditView';
 import HomePage from '../HomePage';
 import ListView from '../ListView';
 import EEPage from '../EEPage';
+import ContentManager from '../../plugins/ContentManager/containers/App';
 
 function App() {
   return (
@@ -32,6 +33,11 @@ function App() {
                   <Link to="/roles">Roles</Link>
                 </p>
               </li>
+              <li>
+                <p>
+                  <Link to="/plugins/content-manager">Content manager</Link>
+                </p>
+              </li>
             </ul>
           </nav>
           <Switch>
@@ -46,6 +52,9 @@ function App() {
             </Route>
             <Route path="/entreprise-edition">
               <EEPage />
+            </Route>
+            <Route path="/plugins/content-manager">
+              <ContentManager />
             </Route>
             <Route path="/">
               <HomePage />
